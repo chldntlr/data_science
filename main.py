@@ -95,6 +95,28 @@ def load_data(city, month, day):
 
     # TO DO: 월과 요일에 따라 데이터 필터링하기
 
+    #기존 데이터 5줄 출력
+    current_line = 0
+    while current_line < len(df):
+        for i in range(current_line, current_line + 5):
+            if i < len(df):
+                print(df.iloc[i])
+            else:
+                break
+        more_time = input("더 많은 항목을 조회 하시겠습니까? (yes, no)")
+        if more_time.lower() != "yes" or current_line >= len(df):
+            break
+        else:
+            current_line += 5
+
+        restart = input('도시, 월, 요일을 다시 입력하시겠습니까? (yes/no): ')
+        if restart.lower() != 'yes':
+            break
+        else:
+            city = input("도시를 입력하세요 (chicago, new york city, washington): ").lower()
+            month = input("월을 입력하세요 (all, january, february, ... , june): ").lower()
+            day = input("요일을 입력하세요 (all, monday, tuesday, ... sunday): ").lower()
+
     return df
 
 
